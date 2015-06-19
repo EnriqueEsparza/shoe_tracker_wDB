@@ -1,0 +1,27 @@
+<h1>Welcome to the Store page</h1>
+
+<p>Add an store to the database:</p>
+
+<form action="/stores" method="post">
+  <label for="name">Store's name:</label>
+  <input id="name" name="name" type="text">
+
+  <button type="submit" class="btn btn-primary btn-lg outline">Add store</button>
+</form>
+
+
+<% if @stores.any?() %>
+<p>Click on any store to see information about them and add shoes they carry:</p>
+
+<ul>
+  <% @stores.each do |store| %>
+  <li><a href="/stores/<%= store.id() %>"><%= store.name() %></a></li>
+  <% end %>
+</ul>
+<% else %>
+<p>There are no stores added yet!</p>
+<% end %>
+
+<p><a href="/shoes">See all shoes</a></p>
+
+<p><a href="/">Return to Main Page</a></p>

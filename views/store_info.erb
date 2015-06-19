@@ -1,0 +1,56 @@
+<h1><%= @store.name() %></h1>
+
+<h3>Select all shoes carried by this store:</h3>
+
+<% if @shoes.any?() %>
+<form action="/stores/<%= @store.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+
+  <% @shoes.each() do |shoe| %>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" id="<%= shoe.id() %>" name="shoe_ids[]" value="<%= shoe.id() %>"><%= shoe.brand() %>
+    </label>
+  </div>
+  <% end %>
+
+  <button type="submit" class="btn btn-primary btn-lg outline">Add shoes</button>
+</form>
+<% end %>
+
+<br>
+<hr>
+
+
+<% if @store.shoes().any?() %>
+<h3>Here are the shoes this store carries:</h3>
+
+<ul>
+  <% @store.shoes().each() do |shoe| %>
+  <li><%= shoe.brand() %></li>
+  <% end %>
+</ul>
+<% else %>
+<p>There are no shoes yet!</p>
+<% end %>
+<hr>
+<h4>Edit store name:</h4>
+<a href="/stores/<%= @store.id() %>/edit">Edit Name Here.</a>
+
+
+
+
+
+<hr>
+
+<h4>Delete this store?</h4>
+<form action="/stores/<%= @store.id() %>" method="post">
+  <input name="_method" type="hidden" value="delete">
+
+
+  <button type="submit" class="btn btn-primary btn-lg outline">Delete Store</button>
+</form>
+
+
+<br>
+<a href="/">Return to Main Page</a>
