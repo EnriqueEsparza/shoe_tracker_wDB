@@ -8,6 +8,11 @@ require "spec_helper"
       expect(new_shoe.save()).to(eq(false))
     end
 
+    it("capitalizes entry when saved") do
+      new_shoe = Shoe.create({:brand => "adidas"})
+      expect(new_shoe.brand()).to(eq("Adidas"))
+    end
+
 
 
   end
