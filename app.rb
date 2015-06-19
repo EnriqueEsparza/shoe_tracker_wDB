@@ -45,3 +45,44 @@ get("/shoes/:id") do
   @stores = Store.all()
   erb(:shoe_info)
 end
+
+patch("/stores/:id") do
+  store_id = params.fetch("id").to_i()
+
+  @store = Store.find(store_id)
+  shoe_ids = params.fetch("shoe_ids")
+  @store.update({:shoe_ids => shoe_ids})
+  @shoes = Shoe.all()
+  erb(:store_info)
+end
+
+delete("/stores/:id") do
+  @store = Store.find(params.fetch("id").to_i())
+  @store.delete()
+  @stores = Store.all()
+  redirect('/')
+end
+
+patch("/shoes/:id") do
+  shoe_id = params.fetch("id").to_i()
+  @shoe = Shoe.find(shoe_id)
+  store_ids = params.fetch("store_ids")
+  @shoe.update({:store_ids => store_ids})
+  @stores = Store.all()
+  erb(:shoe_info)
+end
+
+get("/stores/:id/edit") do
+  @store = Store.find(params.fetch("id").to_i())
+  erb(:store_name)
+end
+
+patch("/stores/:id/edit") do
+
+  name = params.fetch("name")
+  store_id = params.fetch("id").to_i()
+  @store = Store.find(store_id)
+  @store.update({:name => name})
+  @shoes = Shoe.all()
+  redirect("/")
+end
