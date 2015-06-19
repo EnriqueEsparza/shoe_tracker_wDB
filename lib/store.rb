@@ -1,4 +1,5 @@
 class Store < ActiveRecord::Base
+  
 
 
 
