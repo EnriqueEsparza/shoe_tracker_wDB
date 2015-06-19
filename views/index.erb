@@ -1,0 +1,35 @@
+<h1>Welcome to Shoe Tracker!</h1>
+<h2>Where you can check your stores for your favorite shoe brands.</h2>
+
+<p><a href="/shoes">Add a new shoe brand</a></p>
+<p><a href="/stores">Add a new store</a></p>
+
+
+<h3>Here are all the stores in this database:</h3>
+
+<% if @stores.any?() %>
+<p>Click on an store to see what shoes they carry:</p>
+
+<ul>
+  <% @stores.each do |store| %>
+  <li><a href="/stores/<%= store.id() %>"><%= store.name() %></a></li>
+  <% end %>
+</ul>
+<% else %>
+<p>There are no stores added yet!</p>
+<% end %>
+
+
+<h3>Here are all the shoes in this database:</h3>
+
+<% if @shoes.any?() %>
+<p>Click on a shoe brand to see information about it and add stores that carry these shoes:</p>
+
+<ul>
+  <% @shoes.each do |shoe| %>
+  <li><a href="/shoes/<%= shoe.id() %>"><%= shoe.brand() %></a></li>
+  <% end %>
+</ul>
+<% else %>
+<p>There are no shoes added yet!</p>
+<% end %>
