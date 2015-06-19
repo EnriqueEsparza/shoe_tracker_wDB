@@ -7,7 +7,4 @@ class Shoe < ActiveRecord::Base
   define_method(:capitalize_brand) do
     self.brand=(brand().capitalize())
   end
-
-
-
 end

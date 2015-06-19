@@ -12,7 +12,4 @@ require "spec_helper"
       new_shoe = Shoe.create({:brand => "adidas"})
       expect(new_shoe.brand()).to(eq("Adidas"))
     end
-
-
-
   end
