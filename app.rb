@@ -33,3 +33,15 @@ post("/shoes") do
   @shoes = Shoe.all()
   erb(:shoes)
 end
+
+get("/stores/:id") do
+  @store = Store.find(params.fetch("id").to_i())
+  @shoes = Shoe.all()
+  erb(:store_info)
+end
+
+get("/shoes/:id") do
+  @shoe = Shoe.find(params.fetch("id").to_i())
+  @stores = Store.all()
+  erb(:shoe_info)
+end
