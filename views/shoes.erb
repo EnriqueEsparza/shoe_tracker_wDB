@@ -1,6 +1,6 @@
 <h1>Welcome to the Shoe page</h1>
 
-<p>Add a shoe to the database:</p>
+<h3>Add a shoe to the database:</h3>
 
 <form action="/shoes" method="post">
   <label for="brand">Shoe's brand:</label>
@@ -8,10 +8,11 @@
 
   <button type="submit" class="btn btn-primary btn-lg outline">Add shoe</button>
 </form>
+ <hr>
 
 
 <% if @shoes.any?() %>
-<p>Click on a shoe to see information about it and add stores that carry it:</p>
+<h3>Click on a shoe to see information about it and add stores that carry it:</h3></p>
 
 <ul>
   <% @shoes.each do |shoe| %>
