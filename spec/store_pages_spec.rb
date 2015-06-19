@@ -15,4 +15,15 @@ describe("path back to index", {:type => :feature}) do
     click_button("Add store")
     expect(page).to have_content("Underground")
   end
+
+  it("allows you to add shoes that to this store") do
+    test_shoe = Shoe.create({:brand => 'Docs', :id => nil})
+    test_store = Store.create({:name => 'Underground', :id => nil})
+    visit("/")
+    click_link("Underground")
+    visit("/stores/" + test_store.id().to_s())
+    check(test_shoe.name)
+    click_button("Add shoes")
+    expect(page).to have_content("Docs")
+  end
 end
